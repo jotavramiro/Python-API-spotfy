@@ -1,0 +1,227 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+header {
+    padding: 30px 8%;
+    background-color: #181818;
+    border-bottom: 1px solid #282828;
+}
+
+header h1 {
+    color: #1ed760;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #b3b3b3;
+}
+
+main {
+    padding: 40px 8%;
+}
+
+.boas-vindas {
+    background-color: #202020;
+    padding: 35px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.boas-vindas h2 {
+    margin-bottom: 15px;
+}
+
+.boas-vindas p {
+    color: #b3b3b3;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #1ed760;
+    color: #000000;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1fef68;
+}
+
+.estatisticas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #181818;
+    border: 1px solid #282828;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #1ed760;
+}
+
+.card p {
+    color: #b3b3b3;
+    line-height: 1.5;
+}
+
+@media (max-width: 750px) {
+    .estatisticas {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 25px 5%;
+    }
+}
+
+
+/* Lista de artistas */
+.lista-artistas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.artista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.artista:hover {
+    background-color: #282828;
+    transform: translateY(-5px);
+}
+
+.artista img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.artista h3 {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+}
+
+
+/* Lista de músicas */
+.lista-musicas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.musica {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.musica:hover {
+    background-color: #282828;
+}
+
+.musica img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.info-musica {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-musica h3 {
+    color: white;
+    font-size: 15px;
+    margin: 0;
+}
+
+.info-musica p {
+    color: #b3b3b3;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Perfil do usuário */
+.perfil-usuario {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.perfil-usuario img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.perfil-usuario h2 {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+}
+
+.perfil-usuario p {
+    color: #1DB954;
+    font-size: 13px;
+    margin: 5px 0 0;
+}
+
+/* Botão de desconexão */
+.btn-desconectar {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 9px 16px;
+    border: 1px solid #1DB954;
+    border-radius: 20px;
+    color: #1DB954;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.btn-desconectar:hover {
+    background-color: #1DB954;
+    color: #000;
+}
+

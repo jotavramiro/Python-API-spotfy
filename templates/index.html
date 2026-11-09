@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Spotify Stats</title>
+    {% if perfil %}
+    <div class="perfil-usuario">
+        {% if perfil.images %}
+            <img src="{{ perfil.images[0].url }}" alt="Foto do perfil">
+        {% endif %}
+
+        <h2>{{ perfil.display_name }}</h2>
+        <p>Conectado ao Spotify</p>
+        <a href="{{ url_for('logout') }}" class="btn-desconectar">
+    Desconectar Spotify
+</a>
+    </div>
+{% endif %}
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+
+</head>
+<body>
+    <header>
+        <h1>My Spotify Stats</h1>
+        <p>Descubra o universo da sua música.</p>
+    </header>
+
+    <main>
+        <section class="boas-vindas">
+            <h2>Sua vida em músicas</h2>
+            <p>
+                Descubra seus artistas favoritos, suas músicas mais ouvidas
+                e seus hábitos musicais.
+            </p>
+            <button>Conectar ao Spotify</button>
+        </section>
+
+        <section class="estatisticas">
+            <article class="card">
+                <h3>Artistas favoritos</h3>
+                <p>Seus artistas mais ouvidos aparecerão aqui.</p>
+                {% if artistas %}
+ <div class="lista-artistas">
+        {% for artista in artistas %}
+            <div class="artista">
+                {% if artista.images %}
+                    <img src="{{ artista.images[0].url }}" alt="{{ artista.name }}">
+                {% endif %}
+
+                <h3>{{ artista.name }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Conecte sua conta do Spotify para visualizar seus artistas.</p>
+{% endif %}
+            </article>
+
+            <article class="card">
+                <h3>Músicas favoritas</h3>
+                <p>Suas músicas mais ouvidas aparecerão aqui.</p>
+                {% if musicas %}
+    <div class="lista-musicas">
+        {% for musica in musicas %}
+            <div class="musica">
+                <img src="{{ musica.album.images[0].url }}" alt="{{ musica.name }}">
+
+                <div class="info-musica">
+                    <h3>{{ musica.name }}</h3>
+                    <p>
+                        {% for artista in musica.artists %}
+                            {{ artista.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Conecte sua conta do Spotify para visualizar suas músicas.</p>
+{% endif %}
+            </article>
+
+            <article class="card">
+                <h3>Histórico recente</h3>
+                <p>Suas últimas reproduções aparecerão aqui.</p>
+                {% if recentes %}
+    <div class="lista-musicas">
+        {% for item in recentes %}
+            <div class="musica">
+                <img src="{{ item.track.album.images[0].url }}" alt="{{ item.track.name }}">
+
+                <div class="info-musica">
+                    <h3>{{ item.track.name }}</h3>
+
+                    <p>
+                        {% for artista in item.track.artists %}
+                            {{ artista.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+
+                    <span>
+                        Reproduzida em: {{ item.data_formatada }}
+                    </span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Conecte sua conta do Spotify para visualizar seu histórico.</p>
+{% endif %}
+            </article>
+        </section>
+    </main>
+</body>
+</html>
